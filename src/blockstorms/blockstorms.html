@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockstorms</title>
+    <script src="https://unpkg.com/blockly@10.4.3/blockly_compressed.js"></script>
+    <script src="https://unpkg.com/blockly@10.4.3/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly@10.4.3/python_compressed.js"></script>
+    <script src="https://unpkg.com/blockly@10.4.3/msg/en.js"></script>
+    <script src="blockstorms.js"></script>
+    <script src="loop_blocks.js"></script>
+    <script src="motor_blocks.js"></script>
+    <script src="sound_blocks.js"></script>
+    <script src="sensor_blocks.js"></script>
+    <script src="ai_blocks.js"></script>
+    <script src="toolbox.js"></script>
+</head>
+<body>
+    <div id="blocklyDiv" style="width: 800px; height: 600px;"></div>
+
+    <button onclick="generateCode()">Generate Python Code</button>
+    <pre id="codeArea"></pre>
+    <script>
+        const workspace = Blockly.inject("blocklyDiv", { toolbox: toolbox });
+
+        function generateCode() {
+            const code = Blockly.Python.workspaceToCode(workspace);
+            document.getElementById("codeArea").textContent = code;
+        }
+    </script>
+</body>
+</html>
